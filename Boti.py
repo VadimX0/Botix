@@ -192,38 +192,17 @@ bot('откр схему')
 # In[12]:
 
 
-intent = get_intent('Ранхигс')
-if get_answer_by_intent(intent) in BOT_CONFIG['intents']['photo']['responses']:
-    URL = 'http://i.piccy.info/i9/d3478e35fbc025816b5e6710bd2da43a/1607160923/293059/1406912/51894map_rus_kpp.jpg'
-    with urllib.request.urlopen(URL) as url:
-                f = io.BytesIO(url.read())
-                img=Image.open(f)
-    img.show(f)
+
     
-    
-
-
-# In[13]:
-
-
-if 'Ранхигс' in BOT_CONFIG['intents']['photo']['examples']:
-            URL = 'http://i.piccy.info/i9/d3478e35fbc025816b5e6710bd2da43a/1607160923/293059/1406912/51894map_rus_kpp.jpg'
-            with urllib.request.urlopen(URL) as url:
-                f = io.BytesIO(url.read())
-                img=Image.open(f)
-            img.show(f)
 
 
 # In[61]:
 
 
-get_ipython().system(' pip install python-telegram-bot')
 
 
-# In[15]:
 
 
-get_ipython().system(' pip install pyTelegramBotAPI')
 
 
 # In[11]:
@@ -249,7 +228,6 @@ def start(update, context):
     
 def help_command(update, context):
     update.message.reply_text('Help!')
-    user_id = message.from_user.id
     
     
 def echo(update, context):
@@ -275,10 +253,10 @@ def main():
     
     updater.start_polling()
     updater.idle()
-    
+
 if __name__=='__main__':
     main()
-    
+
 bot.polling()
 
 
