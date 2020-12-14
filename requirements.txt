@@ -1,3 +1,8 @@
 numpy==1.19.4
 PyYAML==5.3.1
 typing-extensions==3.7.4.3
+pyTelegramBotAPI==3.6.6
+requests==2.7.0
+telebot==0.0.3
+urllib3==1.24.1
+six==1.12.0
