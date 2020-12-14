@@ -1,1 +1,1 @@
-worker: python boti.py
+web: gunicorn boti.py:app
