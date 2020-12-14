@@ -1,0 +1,1 @@
+worker: python boti.py
