@@ -186,7 +186,7 @@ def bot(question):
 # In[10]:
 
 
-bot('откр схему')
+
 
 
 # In[12]:
@@ -210,6 +210,8 @@ bot('откр схему')
 
 import logging
 import telebot
+import flask
+from flask import Flask, request, abort
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import urllib
 
@@ -221,6 +223,7 @@ format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INF
 logger = logging.getLogger(__name__)
 APP_NAME='telegboti'
 TOKEN = '1353765571:AAGP3v7ywu3WQe2qFiFb2cqcpgraCUiwz7A'
+boti=telebot.TeleBot(TOKEN, threaded=False)
 
 
 def start(update, context):
@@ -236,7 +239,7 @@ def echo(update, context):
     update.message.reply_text(answer)
     user_id = update.message.from_user.id
     if answer in BOT_CONFIG['intents']['photo']['responses']:
-        context.bot.sendPhoto(user_id, photo="https://www.ranepa.ru/images/about_academy/korpusa/map-rus-kpp.jpg", caption="Карта академии")
+        context.boti.sendPhoto(user_id, photo="https://www.ranepa.ru/images/about_academy/korpusa/map-rus-kpp.jpg", caption="Карта академии")
     print(question)
     print(answer)
     print()
@@ -256,8 +259,7 @@ def main():
 
 if __name__=='__main__':
     main()
-
-bot.polling()
+    boti.polling(none_stop=True)
 
 
 # In[ ]:
